@@ -11,7 +11,9 @@ Pre-requisites
     
 4. cd to ui and type `yarn start`
 
-5. Navigate to http://localhost:3001/
+5. Navigate to http://localhost:3000/
+
+(backend is on 3001 but proxied by the react start scripts)
 
 Project features  a react app which proxies to the golang backend for rapis testing.
 
