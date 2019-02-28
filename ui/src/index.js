@@ -11,12 +11,11 @@ import { Provider } from 'react-redux';
 import rootReducer from './reducers';
 import {fetchAsyncDataRequest} from './actions'
 
-// The global redux data store
+// The global (but namespaced) redux data store
 const store = createStore(
     rootReducer,
-    applyMiddleware(thunk)
+    applyMiddleware(thunk) // this allows us to call dynamic dispatch (eg ajax-response) redux methods
   );
-
 
 // This is how you call an async method on page load  
 store.dispatch(fetchAsyncDataRequest());
@@ -25,5 +24,5 @@ store.dispatch(fetchAsyncDataRequest());
 ReactDOM.render(
 <Provider store={store}>
     <App />
-  </Provider>, document.getElementById('root'));
+</Provider>, document.getElementById('root'));
 

@@ -6,27 +6,28 @@ import ThingList from './components/ThingList'
 import { connect } from 'react-redux'
 // import { withRouter } from 'react-router-dom'
 
-
-// const things = [
-//   {name:'bob', id:'1'},
-//   {name:'bob2', id:'2'}
-// ];
-
 class App extends Component {
 
   // For components with data from redux we need to do
   // this arg handling with props. We also need to link
   // the render method with this instance on construction
+  // This component also haslocal state which it manages
+  // The button state.
   constructor(props) {
     super(props);
     this.render.bind(this);
 
     this.state = {buttonPressed:false}
-    this.buttonPressed = this.buttonPressed.bind(this)  
+    this.onButtonPressed = this.onButtonPressed.bind(this)  
+    this.hasMessage = this.hasMessage.bind(this)  
   }
 
-  buttonPressed(){
+  onButtonPressed(){
     this.setState({buttonPressed:true})
+  }
+
+  hasMessage(){
+    return !(this.props.alert=== undefined) && this.props.alert.msg !== "";    
   }
 
   // Redux values can be accessed as this.props.XYZ
@@ -38,13 +39,13 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p>This is the ajax msg loaded on startup:{this.props.data.msg}</p>
+        <Alert color="info" isOpen={this.hasMessage()}>{this.props.alert.msg}</Alert>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <Alert color="danger" isOpen={this.state.buttonPressed}>You done gone and pressed it!</Alert>
         <ThingList/>
-        <Button color="danger" onClick={this.buttonPressed}>Never Press this!</Button>
+        <Button color="danger" onClick={this.onButtonPressed}>Never Press this!</Button>
       </div>
     );
   }
@@ -53,7 +54,7 @@ class App extends Component {
 // React Redux Prop/dispatch  mapping
 const mapStateToProps = state => {
   return {
-  data: state.data
+  alert: state.alert
 }}
 
 // Link any async method calls

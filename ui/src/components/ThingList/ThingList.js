@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Button, ListGroup, ListGroupItem, Container, Row, Col } from 'reactstrap'
 import './ThingList.css'
-import {fetchAsyncThings} from '../../actions'
+import {fetchAsyncThings,addAsyncThing} from '../../actions'
 import { bindActionCreators } from 'redux'
 
 
@@ -16,11 +16,11 @@ class ThingList extends Component {
         this.render.bind(this);
     }
 
+    count = 0;
+
     // Redux values can be accessed as this.props.XYZ
     render() {
-        let itemList = this.props.things.map(item => {
-            return (<ListGroupItem key={item.id}>{item.name}</ListGroupItem>);
-        })
+        let itemList = this.props.things.map(item => (<ListGroupItem key={item.id}>{item.name}</ListGroupItem>) )
         return (
             <Container className='blue'>
                 <Row><Col>All The Things</Col></Row>
@@ -35,7 +35,7 @@ class ThingList extends Component {
                             <Row>
                                 <Col>
                                     <Button color="primary" onClick={this.props.fetchAsyncThings}>Get Things</Button>
-                                    <Button color="primary">Add Thing</Button>
+                                    <Button color="primary" onClick={()=>this.props.addAsyncThing({name:"paul"+this.count++})}>Add Thing</Button>
                                 </Col>
                             </Row>
                         </Container>
@@ -47,16 +47,20 @@ class ThingList extends Component {
 }
 
 // React Redux Prop/dispatch  mapping
+// mapping part of the global redux state to this.props.things
 const mapStateToProps = state => {
     return {
-        things: state.things
+        things: state.things,
+        thingAdded: state.thingAdded
     }
 }
 
 // Link any async method calls
+// Maps async methods with a redux dispatcher into our props
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchAsyncThings: bindActionCreators(fetchAsyncThings, dispatch),
+        addAsyncThing : bindActionCreators(addAsyncThing, dispatch),
         };
 };
     
