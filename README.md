@@ -3,7 +3,7 @@ Blank Golang + React + Redux + Bootstrap
 
 Pre-requisites
 
-1. install node + yarn (then wash thoroughly)
+1. install node + yarn 
 2. Requires GO
 
 3. In the project root: 
