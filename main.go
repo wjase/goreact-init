@@ -18,7 +18,7 @@ func main() {
 
 	rootHandler := http.FileServer(http.Dir("ui/build"))
 	router.PathPrefix("/api/v1/data").HandlerFunc(api.ServeDataAPI)
-	router.PathPrefix("/api/v1/things").HandlerFunc(api.ServeThingsAPI)
+	router.PathPrefix("/api/v1/articles").HandlerFunc(api.ServeArticlessAPI)
 	router.Handle("/", rootHandler)
 	handleStatic(router, "/service-worker.js", "ui/build/")
 	handleStatic(router, "/favicon.ico", "ui/build/")

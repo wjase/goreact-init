@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SomeComponent should render correctly  1`] = `
+<SomeComponent
+  initialData={
+    Object {
+      "articles": Array [],
+      "error": null,
+    }
+  }
+>
+  <div>
+    <h2>
+      My Async Data
+    </h2>
+    <ul>
+      <li
+        key="1"
+      >
+        title1
+      </li>
+      <li
+        key="2"
+      >
+        title2
+      </li>
+      <li
+        key="3"
+      >
+        title3
+      </li>
+    </ul>
+  </div>
+</SomeComponent>
+`;

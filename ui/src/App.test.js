@@ -1,9 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import App from './App';
+import {waitForComponentToRender} from './TestUtils.js'
+import { mount } from 'enzyme';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+test('renders App', () => {
+  const app = mount(<App />);
+  expect(app.containsMatchingElement(<h2>My Async Data</h2>)).toBeTruthy();
 });
+

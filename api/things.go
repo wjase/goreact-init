@@ -1,18 +1,19 @@
 package api
 
 import (
-	"io/ioutil"
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 )
 
-// A Thing is interesting
-type Thing struct {
-	Name string `json:"name,omitempty"`
-	ID   int    `json:"id,omitempty"`
+// A Article is interesting
+type Article struct {
+	Title    string `json:"title,omitempty"`
+	ObjectID int    `json:"objectID,omitempty"`
 }
-var things = []Thing{
+
+var articles = []Article{
 	{"bob", 1},
 	{"bob2", 2},
 	{"bob3", 3},
@@ -20,24 +21,24 @@ var things = []Thing{
 	{"bob5", 5},
 }
 
-var index = len(things)+1
+var index = len(articles) + 1
 
-// ServeThingsAPI returns http.Handler for API endpoint
-func ServeThingsAPI(res http.ResponseWriter, req *http.Request) {
+// ServeArticlesAPI returns http.Handler for API endpoint
+func ServeArticlesAPI(res http.ResponseWriter, req *http.Request) {
 	res.Header().Set("Content-Type", "application/json")
 
-	if req.Method == "POST"{
-		thing := Thing{}
+	if req.Method == "POST" {
+		article := Article{}
 		// Read body
-	    b, err := ioutil.ReadAll(req.Body)
+		b, err := ioutil.ReadAll(req.Body)
 		defer req.Body.Close()
-		err = json.Unmarshal(b, &thing)
+		err = json.Unmarshal(b, &article)
 
-		thing.ID = index
+		article.ObjectID = index
 		index++
 
-		things  = append(things, thing)
-		
+		articles = append(articles, article)
+
 		if err != nil {
 			http.Error(res, err.Error(), 500)
 			return
@@ -48,11 +49,10 @@ func ServeThingsAPI(res http.ResponseWriter, req *http.Request) {
 			return
 		}
 	}
-	
-	
-	fmt.Println(things)
 
-	body, err := json.Marshal(things)
+	fmt.Println(articles)
+
+	body, err := json.Marshal(articles)
 
 	if err != nil {
 		res.WriteHeader(500)
