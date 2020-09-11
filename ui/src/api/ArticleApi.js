@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 const getArticles = () => {
     var promise = new Promise(function (resolve, reject) {
         // do a thing, possibly async, then…

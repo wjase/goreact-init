@@ -18,7 +18,7 @@ func main() {
 
 	rootHandler := http.FileServer(http.Dir("ui/build"))
 	router.PathPrefix("/api/v1/data").HandlerFunc(api.ServeDataAPI)
-	router.PathPrefix("/api/v1/articles").HandlerFunc(api.ServeArticlessAPI)
+	router.PathPrefix("/api/v1/articles").HandlerFunc(api.ServeArticlesAPI)
 	router.Handle("/", rootHandler)
 	handleStatic(router, "/service-worker.js", "ui/build/")
 	handleStatic(router, "/favicon.ico", "ui/build/")
@@ -31,7 +31,6 @@ func main() {
 }
 
 func handleStatics(router *mux.Router, resourcePrefix ...string) {
-
 	for _, prefix := range resourcePrefix {
 		handleStatic(router, "/static/"+prefix+"/", "ui/build/static/"+prefix)
 	}
