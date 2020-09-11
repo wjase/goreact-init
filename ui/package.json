@@ -11,10 +11,12 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "isomorphic-fetch": "^2.2.1",
+    "lodash": "^4.17.20",
     "nock": "^12.0.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "serialize-javascript": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
