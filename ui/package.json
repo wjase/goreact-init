@@ -30,6 +30,7 @@
       "enzyme-to-json/serializer"
     ]
   },
+  "proxy": "http://localhost:3001",
   "eslintConfig": {
     "extends": "react-app"
   },

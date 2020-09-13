@@ -4,8 +4,8 @@ exports[`SomeComponent should render correctly  1`] = `
 <SomeComponent
   initialData={
     Object {
-      "articles": Array [],
       "error": null,
+      "things": Array [],
     }
   }
 >

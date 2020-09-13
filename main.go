@@ -10,8 +10,6 @@ import (
 	"github.com/wjase/goreact-init/api"
 )
 
-var apiHandlers = make(map[string]http.HandlerFunc)
-
 func main() {
 
 	router := mux.NewRouter()
@@ -20,7 +18,7 @@ func main() {
 	router.PathPrefix("/api/v1/data").HandlerFunc(api.ServeDataAPI)
 	router.PathPrefix("/api/v1/articles").HandlerFunc(api.ServeArticlesAPI)
 	router.Handle("/", rootHandler)
-	handleStatic(router, "/service-worker.js", "ui/build/")
+	// handleStatic(router, "/service-worker.js", "ui/build/")
 	handleStatic(router, "/favicon.ico", "ui/build/")
 	handleStatic(router, "/manifest.json", "ui/build/")
 	handleStatics(router, "css", "js", "img", "media")

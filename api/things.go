@@ -2,7 +2,6 @@ package api
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 )
@@ -50,7 +49,7 @@ func ServeArticlesAPI(res http.ResponseWriter, req *http.Request) {
 		}
 	}
 
-	fmt.Println(articles)
+	// fmt.Println(articles)
 
 	body, err := json.Marshal(articles)
 

@@ -1,17 +1,17 @@
 import App, { dataReducer } from './SomeComponent.js';
  
-const articles = ['a', 'b', 'c'];
+const things = ['a', 'b', 'c'];
  
 describe('App', () => {
   describe('Reducer', () => {
-    it('should set a list of articles', () => {
-      const state = { articles: [], error: null };
+    it('should set a list of things', () => {
+      const state = { things: [], error: null };
       const newState = dataReducer(state, {
-        type: 'SET_ARTICLES',
-        articles,
+        type: 'THINGS_UPDATED',
+        things,
       });
  
-      expect(newState).toEqual({ articles, error: false });
+      expect(newState).toEqual({ things, error: false });
     });
   });
  

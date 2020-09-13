@@ -4,7 +4,7 @@ const getThings = () => {
     var promise = new Promise(function (resolve, reject) {
         // do a thing, possibly async, then…
         axios
-            .get('/api/v1/things')
+            .get('/api/v1/articles')
             .then(response => {
                 resolve(response.data)
             })
@@ -15,7 +15,7 @@ const getThings = () => {
     return promise;
 }
 
-export const ThingApi = {
+export const thingApi = {
     getThings:getThings
 }
 

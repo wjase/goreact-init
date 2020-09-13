@@ -3,7 +3,7 @@ import { Counter } from './Components/Counter/Counter.js'
 import { SomeComponent } from './Components/SomeComponent/SomeComponent.js'
 
 const initialData = {
-  articles: [],
+  things: [],
   error: null,
 };
 

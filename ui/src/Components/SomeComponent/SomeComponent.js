@@ -1,27 +1,27 @@
 import React from 'react';
-import { articleApi } from '../../api/ArticleApi.js'
+import { thingApi } from '../../api/ThingApi.js'
 
 export const dataReducer = (state, action) => {
-  if (action.type === 'SET_ERROR') {
-    return { ...state, articles: [], error: true };
+  if (action.type === 'ERROR_UPDATED') {
+    return { ...state, things: [], error: true };
   }
 
-  if (action.type === 'SET_ARTICLES') {
-    return { ...state, articles: action.articles, error: false };
+  if (action.type === 'THINGS_UPDATED') {
+    return { ...state, things: action.things, error: false };
   }
 
   throw new Error();
 };
 
-export const useArticles = (initialData)=>{
+export const useThings = (initialData)=>{
   const [data, dispatch] = React.useReducer(dataReducer, initialData);
    
   React.useEffect( () => {
-      articleApi.getArticles()
-      .then(articles => {
-        dispatch({ type: 'SET_ARTICLES', articles });
-      }).catch(() => {
-        dispatch({ type: 'SET_ERROR' });
+    thingApi.getThings()
+      .then(things => {
+        dispatch({ type: 'THINGS_UPDATED', things });
+      }).catch((err) => {
+        dispatch({ type: 'ERROR_UPDATED', err });
       });
   }, []);
 
@@ -30,7 +30,7 @@ export const useArticles = (initialData)=>{
 
 export const SomeComponent = ({initialData}) => {
 
-  let data = useArticles(initialData)
+  let data = useThings(initialData)
 
   return (
     <div>
@@ -39,7 +39,7 @@ export const SomeComponent = ({initialData}) => {
       {data.error && <div className="error">Error</div>}
 
       <ul>
-        {data.articles.map(item => (
+        {data.things.map(item => (
           <li key={item.objectID}>{item.title}</li>
         ))}
       </ul>
