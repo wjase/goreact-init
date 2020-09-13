@@ -1,5 +1,5 @@
 # goreact-init
-Blank Golang + React + Redux + Bootstrap
+Blank Golang + React (Jest + Enzyme)+ React hooks + Bootstrap
 
 Pre-requisites
 
@@ -7,7 +7,7 @@ Pre-requisites
 2. Requires GO
 
 3. In the project root: 
-    go run main.go
+    go run main.go in a separate shell
     
 4. cd to ui and type `yarn start`
 
@@ -17,6 +17,6 @@ Pre-requisites
 
 Project features  a react app which proxies to the golang backend for rapis testing.
 
-UI  has react and redux and redux-thunk for asyncstate updates.
+UI has react and hooks for async state updates.
 
 
