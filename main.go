@@ -29,6 +29,7 @@ func main() {
 }
 
 func handleStatics(router *mux.Router, resourcePrefix ...string) {
+
 	for _, prefix := range resourcePrefix {
 		handleStatic(router, "/static/"+prefix+"/", "ui/build/static/"+prefix)
 	}
