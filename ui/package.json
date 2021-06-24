@@ -47,6 +47,7 @@
     ]
   },
   "devDependencies": {
-    "enzyme-to-json": "^3.5.0"
+    "enzyme-to-json": "^3.5.0",
+    "yarn-audit-fix": "^6.3.4"
   }
 }
